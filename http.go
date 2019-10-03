@@ -13,7 +13,7 @@ import (
 )
 
 // DoHTTP sends an HTTP Request for sending an SMS
-func DoHTTP(client http.Client, method, contentType, address string,
+func DoHTTP(client *http.Client, method, contentType, address string,
 	fields url.Values, body []byte, onResponse Response) (resp *http.Response, err error) {
 
 	var request *http.Request
