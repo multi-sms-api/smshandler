@@ -83,13 +83,12 @@ func DoHTTP(client http.Client, method, contentType, address string,
 	}
 
 	if resp.StatusCode == http.StatusOK {
-		var status XMLResponse
-		status, err = onResponse.FromXMLResponse(respBody)
+		err = onResponse.FromXMLResponse(respBody)
 		if err != nil {
 			return
 		}
-		if !onResponse.IsOK(status) {
-			err = onResponse.ToError(status)
+		if !onResponse.IsOK() {
+			err = onResponse.ToError()
 		}
 	}
 
