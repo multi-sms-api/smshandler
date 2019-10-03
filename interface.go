@@ -17,7 +17,7 @@ type XMLHandler interface {
 
 // Response holds interface for
 type Response interface {
-	FromXMLResponse(status []byte) (XMLResponse, error)
+	FromXMLResponse(status []byte) error
 	ToError() error
 	IsOK() bool
 }
