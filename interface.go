@@ -6,7 +6,9 @@ import "net/http"
 type XMLResponse struct{}
 
 // HTTPHandler holds interface for HTTP client usage that implemented by each provider
-type HTTPHandler interface{}
+type HTTPHandler struct {
+	Client *http.Client
+}
 
 // XMLHandler is an interface to send and post SMS messages
 type XMLHandler interface {
