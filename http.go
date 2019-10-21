@@ -23,6 +23,8 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 
 	if body != nil {
 		bodyReader = bytes.NewReader(body)
+	} else {
+		bodyReader = bytes.NewReader([]byte{})
 	}
 
 	switch method {
