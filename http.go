@@ -31,6 +31,11 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	case http.MethodGet:
 		fullAddress = fmt.Sprintf("%s?%s", fullAddress, fields.Encode())
 	}
+	if strings.Contains(os.Getenv("SMSHTTPDEBUG"), "dump=true") {
+		fmt.Printf("method: %s, fullAddress: %s, bodyReader.len %d, contentType: %s",
+			method, fullAddress, bodyReader.Len(), contentType)
+	}
+
 	request, err = http.NewRequest(method, fullAddress, bodyReader)
 
 	if err != nil {
