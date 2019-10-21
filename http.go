@@ -82,6 +82,10 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 		return
 	}
 
+	if onResponse == nil {
+		return
+	}
+
 	if resp.StatusCode == http.StatusOK {
 		err = onResponse.FromXMLResponse(respBody)
 		if err != nil {
