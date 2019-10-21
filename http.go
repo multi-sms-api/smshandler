@@ -19,7 +19,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	var request *http.Request
 	var bodyReader *bytes.Reader
 
-	fullAddress := fmt.Sprintf("%s", address)
+	fullAddress := address
 
 	if body != nil {
 		bodyReader = bytes.NewReader(body)
@@ -28,10 +28,8 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	switch method {
 	case http.MethodGet:
 		fullAddress = fmt.Sprintf("%s?%s", fullAddress, fields.Encode())
-		request, err = http.NewRequest(http.MethodGet, fullAddress, bodyReader)
-	case http.MethodPost:
-		request, err = http.NewRequest(http.MethodPost, fullAddress, bodyReader)
 	}
+	request, err = http.NewRequest(method, fullAddress, bodyReader)
 
 	if err != nil {
 		return nil, err
