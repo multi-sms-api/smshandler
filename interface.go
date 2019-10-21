@@ -12,7 +12,7 @@ type XMLHandler interface {
 
 // RESTHandler is an interface to send and post SMS messages using HTTP REST
 type RESTHandler interface {
-	SendSMS(method string, client *http.Client) (*http.Response, error)
+	SendSMS(method string, client *http.Client, onResponse Response) (*http.Response, error)
 }
 
 // HTTPHandler interface for working with HTTP client interface
