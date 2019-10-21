@@ -32,7 +32,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 		fullAddress = fmt.Sprintf("%s?%s", fullAddress, fields.Encode())
 	}
 	if strings.Contains(os.Getenv("SMSHTTPDEBUG"), "dump=true") {
-		fmt.Printf("method: %s, fullAddress: %s, bodyReader.len %d, contentType: %s",
+		fmt.Printf(">>>> method: %s, fullAddress: %s, bodyReader.len %d, contentType: %s",
 			method, fullAddress, bodyReader.Len(), contentType)
 	}
 
@@ -55,7 +55,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 
 	if err != nil {
 		if strings.Contains(os.Getenv("SMSHTTPDEBUG"), "dump=true") {
-			fmt.Printf("Error was given: %s", err)
+			fmt.Printf(">>>> Error was given: %s", err)
 		}
 		return
 	}
@@ -63,7 +63,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	if resp == nil {
 		err = fmt.Errorf("resp is nil")
 		if strings.Contains(os.Getenv("SMSHTTPDEBUG"), "dump=true") {
-			fmt.Println("resp is nil")
+			fmt.Println(">>>> resp is nil")
 		}
 		return
 	}
@@ -77,7 +77,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	}
 
 	if resp.Body == nil {
-		err = fmt.Errorf("resp.body is nil")
+		err = fmt.Errorf(">>>> resp.body is nil")
 		return
 	}
 
