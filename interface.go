@@ -23,8 +23,7 @@ type HTTPHandler interface {
 
 // Response holds interface for
 type Response interface {
-	FromXMLResponse(status []byte) error
-	FromJSONResponse(status []byte) error
+	FromResponse(status []byte) error
 	ToError() error
 	IsOK() bool
 }

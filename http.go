@@ -92,7 +92,7 @@ func DoHTTP(client *http.Client, method, contentType, address string,
 	}
 
 	if resp.StatusCode == http.StatusOK {
-		err = onResponse.FromXMLResponse(respBody)
+		err = onResponse.FromResponse(respBody)
 		if err != nil {
 			return
 		}
